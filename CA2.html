@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const namePattern = /^[a-zA-Z\s]+$/;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            
+            
+            if (!namePattern.test(name)) {
+                alert('Name can only contain letters and spaces.');
+                return false;
+            }
+
+            
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>User Information Form</h2>
+    <form action="form_handler.php" method="post" onsubmit="return validateForm()">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" pattern="[a-zA-Z\s]+" required><br><br>
+        
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="address">Address</label><br>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+        
+        <label>Gender</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
